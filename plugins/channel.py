@@ -2,20 +2,11 @@ from pyrogram import Client, filters
 from info import CHANNELS
 from database.ia_filterdb import save_file
 
-media_filter = filters.video
-
+media_filter = filters.document | filters.video
 
 @Client.on_message(filters.chat(CHANNELS) & media_filter)
 async def media(bot, message):
-    """Media Handler"""
-    for file_type in ("video","audio"):
-        media = getattr(message, file_type, None)
-        if media is not None:
-            break
-    else:
-        return
-
-    media.file_type = file_type
+    media = getattr(message, message.media.value, None)
     media.caption = message.caption
+    media.file_type = None
     await save_file(media)
-    print("⭕ Auto Indexed ✅")
