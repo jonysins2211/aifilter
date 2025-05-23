@@ -58,12 +58,12 @@ SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), False)
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "📂<b>File Name:</b> ⪧ {file_caption}")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
 
-IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<a href={url}>{title} {year}</a>\n❤You searched: {query}")
-# IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", """
-# <b>★<a href={url}/ratings>{rating}</a> <a href={url}>{title}</a> {year}</b>
-# 𓆩ཫDirector : {director} | 🎥 {genres}
-# ✵You Searched for: {query} ❤
-# """)
+#IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<a href={url}>{title} {year}</a>\n❤You searched: {query}")
+IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", """
+<b>🏷 Title</b>: <a href={url}>{title}</a>
+🎭 Genres: {genres}
+📆 Year: <a href={url}/releaseinfo>{year}</a>
+🌟 Rating: <a href={url}/ratings>{rating}</a> / 10 """)
 
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), False)
